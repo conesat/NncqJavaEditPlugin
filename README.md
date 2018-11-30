@@ -7,7 +7,7 @@
 
 #### 安装方式
  
->  点击下载app中的jar [NncqJavaEditPlugin.jar](https://github.com/conesat/NncqJavaEditPlugin/app/NncqJavaEditPlugin.jar)
+>  点击下载app中的jar [NncqJavaEditPlugin.jar](https://github.com/conesat/NncqJavaEditPlugin/blob/master/app/)
 >  在Idea中选择`File`--->`Settings`--->`Plugins`--->`Install plugin from disk...` 选择下载的插件即可
 
 #### 编写格式
