@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 public class BuildAnnotationApplication extends AnAction {
     public static Project mProject;
     public static String fileName="";
+
+    int start=0,end=0;
     @Override
     public void actionPerformed(AnActionEvent event) {
         Editor editor = event.getData(PlatformDataKeys.EDITOR);
@@ -33,7 +35,12 @@ public class BuildAnnotationApplication extends AnAction {
 
                 String selectedText = selectionModel.getSelectedText();
                 if (StringUtils.isBlank(selectedText)) {
-                    return;
+                    selectedText=editor.getDocument().getText();
+                    start=0;
+                    end=selectedText.length();
+                }else {
+                    start=selectionModel.getSelectionStart();
+                    end=selectionModel.getSelectionEnd();
                 }
 
                 if (SERVICE_NAME.equals("")||!fileName.equals(file.getName())){
@@ -45,21 +52,17 @@ public class BuildAnnotationApplication extends AnAction {
                 }
 
 
+                String finalSelectedText = selectedText;
                 Runnable runnable = new Runnable() {
                     @Override
                     public void run() {
-                        StringBuffer text = new StringBuffer(editor.getDocument().getText());
                         //先对空格、制表符进行换掉，然后再重新进行分隔处理。其中分行不处理，因为在写文章的时候复制的一些内容分行是有意义的。
-                        editor.getDocument().replaceString(selectionModel.getSelectionStart(), selectionModel.getSelectionEnd(), AnnotationBuilder.builderStart(selectedText,SERVICE_NAME));
-                        //text.replace(selectionModel.getSelectionStart(), selectionModel.getSelectionEnd(), AnnotationBuilder.builderStart(selectedText,SERVICE_NAME));
+                        editor.getDocument().replaceString(start, end, AnnotationBuilder.builderStart(finalSelectedText,SERVICE_NAME));
                         if (!finalImp.equals("")&&finalNum!=0){
                             editor.getDocument().insertString(finalNum,"\n\n"+ finalImp);
-                           // text.indexOf("\n\n"+ finalImp,finalNum);
                             finalNum = 0;
                             finalImp="";
                         }
-
-                       // editor.getDocument().setText(output);
 
                     }
                 };

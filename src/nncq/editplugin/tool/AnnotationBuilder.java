@@ -3,6 +3,7 @@ package nncq.editplugin.tool;
 
 public class AnnotationBuilder {
 
+    public static String KG="";
 
     public static String builderStart(String select, String serviceName) {
         boolean zhushi=false;
@@ -16,7 +17,7 @@ public class AnnotationBuilder {
                 zhushi=false;
             }
             if (zhushi){
-                builderCode+=string;
+                builderCode +=string+"\n";
             }else {
                 builderCode += builderCode(string, serviceName);
             }
@@ -29,6 +30,7 @@ public class AnnotationBuilder {
     }
 
     public static String builderCode(String input, String serviceName) {
+        KG="";
         int start = 0;
         String re = input+"\n";
         for (; start < input.length(); start++) {
