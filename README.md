@@ -37,4 +37,7 @@
 > 如果不希望生成则可以在[r|req|requestmapping] getList/{id} g nopre 后加上 nopre则不生成
 >
 
+
+#### 生成快捷键 Alt+Insert 或者鼠标右键
+
 #### NNCQ
