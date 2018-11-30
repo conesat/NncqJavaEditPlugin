@@ -106,14 +106,17 @@ public class BuildAnnotationApplication extends AnAction {
         StringBuilder input=new StringBuilder(string);
         String scan="";
         String imp="";
-        if (string.indexOf("import org.springframework.cloud.openfeign.FeignClient;")==-1){
-            imp+="import org.springframework.cloud.openfeign.FeignClient;\n";
+        if (string.indexOf("import io.swagger.annotations.ApiOperation;")==-1){
+            imp+="import io.swagger.annotations.ApiOperation;\n";
         }
         if (string.indexOf("import org.springframework.security.access.prepost.PreAuthorize;")==-1){
             imp+="import org.springframework.security.access.prepost.PreAuthorize;\n";
         }
         if (string.indexOf("import org.springframework.web.bind.annotation.RequestMapping;")==-1){
             imp+="import org.springframework.web.bind.annotation.RequestMapping;\n";
+        }
+        if (string.indexOf("import org.springframework.web.bind.annotation.RequestMethod;")==-1){
+            imp+="import org.springframework.web.bind.annotation.RequestMethod;\n";
         }
 
         if (!imp.equals("")){
