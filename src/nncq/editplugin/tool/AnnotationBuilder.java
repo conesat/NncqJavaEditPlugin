@@ -118,7 +118,15 @@ public class AnnotationBuilder {
             }
         } else {
             re = "@RequestMapping(value = \"" + values[0] + "\", method = RequestMethod.GET)\n";
+            if (!values[values.length - 1].equals("nopre")) {
+                if (values[0].indexOf("/{") != -1) {
+                    values[0] = values[0].substring(0, values[0].indexOf("/{"));
+                }
+                values[0] = values[0].replaceAll("/", "_");
+                re += "@PreAuthorize(\"hasAuthority('" + serviceName + "_" + values[0] + "_GET')\")\n";
+            }
         }
+
         return re;
     }
 
