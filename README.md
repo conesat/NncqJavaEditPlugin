@@ -1,6 +1,9 @@
 # NncqJavaEditPlugin.md
 **NNCQ专用 快速注解生成插件**
 
+#### 预览
+![](https://github.com/conesat/NncqJavaEditPlugin/blob/master/img/nncq.gif)
+
 #### 使用的注解
 
 >  ApiOperation RequestMapping PreAuthorize
